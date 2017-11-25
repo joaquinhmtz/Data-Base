@@ -1,0 +1,1 @@
+install:install-file -Dfile=/Users/fernando/Desktop/lib/sqljdbc4.jar -DgroupId=sqljdbc -DartifactId=sqljdbc -Dversion=4 -Dpackaging=jar
