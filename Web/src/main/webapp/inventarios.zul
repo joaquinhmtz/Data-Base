@@ -1,0 +1,62 @@
+<?page title="Inventario" ?>
+
+<?link rel="stylesheet" type="text/css" href="css/bootstrap.css" ?>
+
+<zk>
+    <window border="none" height="100%" width="100%">
+
+        <borderlayout hflex="1" vflex="1">
+            <north>
+                <div>
+                    <label style="font-size:30px">Producto</label>
+                    <menubar height="100%" sclass="navbar navbar-toggleable-md navbar-light bg-faded">
+
+                        <menuitem style="margin-top:5px; margin-left:50px; font-size:30px;" label="Ver Inventario" id="menuVer"></menuitem>
+                        <menuitem style="margin-top:5px; margin-left:50px; font-size:30px;" label="Inicio" href="index.zul"></menuitem>
+                    </menubar>
+                </div>
+            </north>
+            <center id="div_busqueda" title="Almacenes"  border="normal"
+                  apply="Web.codigo.controller.InventarioController">
+                <borderlayout height="100%">
+                    <north>
+                        <hbox align="center" height="100px">
+                            Keyword:
+                            <textbox id="busqueda_box"/>
+                            <button id="searchButton" label="Buscar" image="/img/busqueda.gif" />
+                            <button id="nuevoButton" label="Agregar" image="/img/plus.png"/>
+                        </hbox>
+                    </north>
+
+                    <center>
+                        <listbox id="inventariosListbox"   emptyMessage="Producto no encontrado" height="400px" style="margin-top:10px">
+                            <listhead>
+                                <listheader label="Fecha" />
+                                <listheader label="Producto" />
+                                <listheader label="Almacen" />
+                                <listheader label="Precio" />
+                                <listheader label="Cantidad" />
+                            </listhead>
+                            <template name="model">
+                                <listitem>
+                                    <listcell label="${each.fecha}"></listcell>
+                                    <listcell label="${each.producto.descripcion_producto}"></listcell>
+                                    <listcell label="${each.almacen.nombre_almacen}"></listcell>
+                                    <listcell label="${each.precio}"></listcell>
+                                    <listcell label="${each.cant}"></listcell>
+
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </center>
+
+                </borderlayout>
+
+            </center>
+
+
+
+
+        </borderlayout>
+    </window>
+</zk>

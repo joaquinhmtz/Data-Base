@@ -1,0 +1,140 @@
+<?page title="Productos" ?>
+
+<?link rel="stylesheet" type="text/css" href="css/bootstrap.css" ?>
+<zk>
+
+    <window border="none" height="100%" width="100%">
+
+        <borderlayout hflex="1" vflex="1">
+            <north>
+                <div>
+                <label style="font-size:30px">Producto</label>
+                <menubar height="100%" sclass="navbar navbar-toggleable-md navbar-light bg-faded">
+
+                    <menuitem style="margin-top:5px; margin-left:50px; font-size:30px;" label="Ver Productos" id="menuVer"></menuitem>
+                    <menuitem style="margin-top:5px; margin-left:50px; font-size:30px;" label="Insertar Productos" id="menuInsert"></menuitem>
+                    <menuitem style="margin-top:5px; margin-left:50px; font-size:30px;" label="Inicio" href="index.zul"></menuitem>
+                </menubar>
+                </div>
+            </north>
+            <west visible="false" id="div_busqueda" title="Almacenes" width="600px" border="normal"
+                  apply="Web.codigo.controller.ProductoController">
+                <borderlayout height="100%">
+                    <north>
+                        <hbox align="center" height="100px">
+                            Keyword:
+                            <textbox id="busqueda_box"/>
+                            <button id="searchButton" label="Buscar" image="/img/busqueda.gif" />
+                            <button id="nuevoButton" label="Agregar" image="/img/plus.png"/>
+                        </hbox>
+                    </north>
+
+                    <center>
+                        <listbox id="productosListbox"   emptyMessage="Producto no encontrado" height="400px" style="margin-top:10px">
+                            <listhead>
+                                <listheader label="Codigo Barra" />
+                                <listheader label="Descripcion" />
+                            </listhead>
+                            <template name="model">
+                                <listitem>
+                                    <listcell label="${each.codigo_barra}"></listcell>
+                                    <listcell label="${each.descripcion_producto}"></listcell>
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </center>
+
+                </borderlayout>
+
+            </west>
+
+
+            <center>
+                <borderlayout>
+
+                    <west width="50%">
+                        <div id="Nuevo" height="100%" visible="false" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('Web.codigo.controller.ProductoController')" validationMessages="@id('vmsgs')" form="@id('fx') " >
+                            <grid height="100%">
+                                <columns>
+                                    <column label="Campo"/>
+                                    <column label="Valor"/>
+                                </columns>
+
+                                <rows height="70%">
+                                    <row height="25%">
+                                        <label value="Codigo Barra" width="150px" />
+                                        <hlayout>
+                                            <label  id="Codigo_barra_nuevo" value="@bind(vm.producto_vacio.codigo_barra)"
+                                                    width="150px" tabindex="1" />
+                                        </hlayout>
+                                    </row>
+                                    <row height="25%">
+                                        <label value="Descripcion Producto" width="150px" />
+                                        <hlayout>
+                                            <textbox id="Descripcion_nuevo" value="@bind(vm.producto_vacio.descripcion_producto)"
+                                                     width="150px" tabindex="1" />
+                                        </hlayout>
+                                    </row>
+
+
+                                    <row height="25%">
+
+                                        <button style="margin-left:50px" id="insertar">Registrar</button>
+
+                                    </row>
+                                </rows>
+                            </grid>
+                        </div>
+                    </west>
+
+                    <east width="50%">
+                        <div id="Datos" visible="false" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('Web.codigo.controller.ProductoController')" validationMessages="@id('vmsgs')" form="@id('fx') @load(vm.producto_select))">
+
+                            <grid>
+                                <columns>
+                                    <column label="Campo"/>
+                                    <column label="Valor"/>
+                                </columns>
+
+                                <rows>
+                                    <row>
+                                        <label value="Codigo de Barra" width="150px" />
+                                        <hlayout>
+                                            <label id="Codigo_barra" value="@bind(vm.producto_select.codigo_barra)"
+                                                   width="150px" tabindex="1" />
+                                        </hlayout>
+                                    </row>
+                                    <row>
+                                        <label  value="Descripcion" width="150px" />
+                                        <hlayout>
+                                            <textbox id="Descripcion" value="@bind(vm.producto_select.descripcion_producto)"
+                                                     width="150px" tabindex="1" />
+                                        </hlayout>
+                                    </row>
+
+
+
+
+                                    <row>
+
+                                        <button id="update" >Update</button>
+                                        <button id="delete">Delete</button>
+                                    </row>
+
+
+
+
+
+                                </rows>
+
+                            </grid>
+
+
+                        </div>
+                    </east>
+                </borderlayout>
+            </center>
+
+        </borderlayout>
+    </window>
+</zk>

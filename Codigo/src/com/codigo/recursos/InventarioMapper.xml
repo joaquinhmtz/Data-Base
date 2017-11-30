@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codigo.dao.Inventario">
+    <resultMap id = "result" type = "Inventario">
+        <result property = "producto.codigo_barra" column="producto_id"/>
+        <result property = "almacen.id_almacen" column="almacen_id"/>
+        <result property = "precio" column="precio"/>
+        <result property = "cant" column="cant"/>
+        <result property = "fecha" column="fecha"/>
+
+
+    </resultMap>
+
+    <select id="getTodosInventarios" resultMap="result">
+        SELECT * FROM inventario;
+    </select>
+
+    <select id="getByID" parameterType="int" resultMap="result">
+        SELECT * FROM inventario WHERE fecha=${fecha}
+    </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codigo.dao.Almacen">
+    <resultMap id = "result" type = "Almacen">
+        <result property = "id_almacen" column="id_almacen"/>
+        <result property = "nombre_almacen" column="nombre_almacen"/>
+        <result property = "direccion" column="direccion"/>
+
+    </resultMap>
+    
+    <select id="getTodosAlmacenes" resultMap="result">
+        SELECT * FROM almacen;
+    </select>
+    
+    <select id="getByID" parameterType="int" resultMap="result">
+        SELECT * FROM almacen WHERE id_almacen=${id_almacen}
+    </select>
+
+    
+
+
+</mapper>

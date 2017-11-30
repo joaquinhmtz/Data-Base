@@ -1,0 +1,221 @@
+<?page title="Almacenes" ?>
+
+<?link rel="stylesheet" type="text/css" href="css/bootstrap.css" ?>
+<zk>
+
+    <window border="none" height="100%" width="100%">
+
+            <borderlayout hflex="1" vflex="1">
+                <north  >
+                    <menubar height="100%" sclass="navbar navbar-toggleable-md navbar-light bg-faded">
+                        <menuitem style="margin-top:20px; margin-left:50px; font-size:30px;" label="Ver Almacenes" id="menuVer"></menuitem>
+                        <menuitem style="margin-top:20px; margin-left:50px; font-size:30px;" label="Insertar Almacenes" id="menuInsert"></menuitem>
+                        <menuitem style="margin-top:20px; margin-left:50px; font-size:30px;" label="Inicio" href="index.zul"></menuitem>
+                    </menubar>
+                </north>
+                <west visible="false" id="div_busqueda" title="Almacenes" width="600px" border="normal"
+                      apply="Web.codigo.controller.AlmacenController">
+                    <borderlayout height="100%">
+                        <north>
+                    <hbox align="center" height="100px">
+                        Keyword:
+                        <textbox id="busqueda_box"/>
+                        <button id="searchButton" label="Buscar" image="/img/busqueda.gif" />
+                        <button id="nuevoButton" label="Agregar" image="/img/plus.png"/>
+                    </hbox>
+                        </north>
+
+                    <center>
+                    <listbox id="almacenesListbox"   emptyMessage="Almacen no encontrado" height="400px" style="margin-top:10px">
+                        <listhead>
+                            <listheader label="Id" />
+                            <listheader label="Nombre" />
+                            <listheader label="Calle"/>
+                            <listheader label="Numero"/>
+                            <listheader label="Colonia"/>
+                            <listheader label="CP"/>
+                            <listheader label="Ciudad"/>
+                        </listhead>
+                        <template name="model">
+                            <listitem>
+                                <listcell label="${each.id_almacen}"></listcell>
+                                <listcell label="${each.nombre_almacen}"></listcell>
+                                <listcell label="${each.calle}"> </listcell>
+                                <listcell label="${each.numero}"> </listcell>
+                                <listcell label="${each.colonia}"> </listcell>
+                                <listcell label="${each.CP}"> </listcell>
+                                <listcell label="${each.ciudad}"> </listcell>
+
+                            </listitem>
+                        </template>
+                    </listbox>
+                    </center>
+
+                    </borderlayout>
+
+                </west>
+
+
+                <center>
+                    <borderlayout>
+
+                        <west width="50%">
+                            <div id="Nuevo" height="100%" visible="false" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('Web.codigo.controller.AlmacenController')" validationMessages="@id('vmsgs')" form="@id('fx') @load(vm.almacen_vacio)" >
+                                <grid height="100%">
+                                    <columns>
+                                        <column label="Campo"/>
+                                        <column label="Valor"/>
+                                    </columns>
+
+                                    <rows height="70%">
+                                        <row height="25%">
+                                            <label value="ID Almacen" width="150px" />
+                                            <hlayout>
+                                                <label  id="ID_nuevo" value="@bind(vm.almacen_vacio.id_almacen)"
+                                                          width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+                                        <row height="25%">
+                                            <label value="Nombre Almacen" width="150px" />
+                                            <hlayout>
+                                                <textbox id="nombre_nuevo" value="@bind(vm.almacen_vacio.nombre_almacen)"
+                                                         width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+                                        <row height="25%">
+                                            <label value="Calle" width="150px" />
+                                            <hlayout>
+                                                <textbox id="calle_nuevo" value="@bind(vm.almacen_vacio.calle)"
+                                                         width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+                                        <row height="25%">
+                                            <label value="Numero" width="150px" />
+                                            <hlayout>
+                                                <textbox id="numero_nuevo" value="@bind(vm.almacen_vacio.numero)"
+                                                         width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+                                        <row height="25%">
+                                            <label value="Colonia" width="150px" />
+                                            <hlayout>
+                                                <textbox id="colonia_nuevo" value="@bind(vm.almacen_vacio.colonia)"
+                                                         width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+                                        <row height="25%">
+                                            <label value="CP" width="150px" />
+                                            <hlayout>
+                                                <textbox id="CP_nuevo" value="@bind(vm.almacen_vacio.CP)"
+                                                         width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+                                        <row height="25%">
+                                            <label value="Ciudad_nuevo" width="150px" />
+                                            <hlayout>
+                                                <textbox id="ciudad_nuevo" value="@bind(vm.almacen_vacio.ciudad)"
+                                                         width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+
+                                        <row height="25%">
+
+                                            <button style="margin-left:50px" id="insertar">Registrar</button>
+
+                                        </row>
+                                    </rows>
+                                </grid>
+                            </div>
+                        </west>
+
+                        <east width="50%">
+                            <div  id="Datos" visible="false" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('Web.codigo.controller.AlmacenController')" validationMessages="@id('vmsgs')" form="@id('fx') @load(vm.almacen_select))">
+
+                                <grid>
+                                    <columns>
+                                        <column label="Campo"/>
+                                        <column label="Valor"/>
+                                    </columns>
+
+                                    <rows>
+                                        <row>
+                                            <label value="ID Almacen" width="150px" />
+                                            <hlayout>
+                                                <label id="ID" value="@bind(vm.almacen_select.id_almacen)"
+                                                          width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+                                        <row>
+                                            <label  value="Nombre" width="150px" />
+                                            <hlayout>
+                                                <textbox id="nombre" value="@bind(vm.almacen_select.nombre_almacen)"
+                                                         width="150px" tabindex="1" />
+                                            </hlayout>
+                                        </row>
+                                        <row>
+                                            <label  value="Calle" width="150px" />
+                                            <hlayout>
+                                                <textbox id="calle"  value="@bind(vm.almacen_select.calle)"
+                                                         width="150px" tabindex="1"  />
+                                            </hlayout>
+                                        </row>
+                                        <row>
+                                            <label  value="Numero" width="150px" />
+                                            <hlayout>
+                                                <textbox id ="numero" value="@bind(vm.almacen_select.numero)"
+                                                         width="150px" tabindex="1"  />
+                                            </hlayout>
+                                        </row>
+                                        <row>
+                                            <label  value="Colonia" width="150px" />
+                                            <hlayout>
+                                                <textbox id="colonia" value="@bind(vm.almacen_select.colonia)"
+                                                         width="150px" tabindex="1"  />
+                                            </hlayout>
+                                        </row>
+                                        <row>
+                                            <label  value="CP" width="150px" />
+                                            <hlayout>
+                                                <textbox id="CP"  value="@bind(vm.almacen_select.CP)"
+                                                         width="150px" tabindex="1"  />
+                                            </hlayout>
+                                        </row>
+                                        <row>
+                                            <label  value="Ciudad" width="150px" />
+                                            <hlayout>
+                                                <textbox id ="ciudad"  value="@bind(vm.almacen_select.ciudad)"
+                                                         width="150px" tabindex="1"  />
+                                            </hlayout>
+                                        </row>
+
+
+
+                                        <row>
+
+                                            <button sclass="btn btn-primary" id="update" >Update</button>
+                                            <button sclass="btn btn-primary" id="delete">Delete</button>
+                                        </row>
+
+
+
+
+
+                                    </rows>
+
+                                </grid>
+
+
+                            </div>
+                        </east>
+
+
+
+
+
+
+                    </borderlayout>
+                </center>
+
+    </borderlayout>
+    </window>
+</zk>

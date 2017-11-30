@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Web.codigo.dao.Inventario">
+
+    <resultMap id = "result" type = "Inventario">
+        <id property="fecha" column="fecha"/>
+        <result property = "precio" column="precio"/>
+        <result property = "cant" column="cant"/>
+        <association property="producto" javaType="Producto">
+            <id property="codigo_barra" column="codigo_barra"></id>
+            <result property = "descripcion_producto" column="descripcion"/>
+        </association>
+        <association property="almacen" javaType="Almacen">
+            <id property="id_almacen" column="id_almacen"></id>
+            <result property="nombre_almacen" column="nombre_almacen"></result>
+        </association>
+
+    </resultMap>
+
+    <select id="getTodosInventarios" resultMap="result">
+        SELECT inv.fecha,alm.id_almacen,alm.nombre_almacen,pro.codigo_barra,pro.descripcion,precio,cant
+        FROM ((inventario as inv
+        INNER JOIN producto as pro ON inv.producto_id = pro.codigo_barra)
+        INNER JOIN almacen as alm on inv.almacen_id = alm.id_almacen);
+    </select>
+
+    <select id="selectInventarioByFecha" parameterType="Inventario" resultMap="result">
+         SELECT fecha,alm.id_almacen,alm.nombre_almacen,alm.direccion,pro.codigo_barra,pro.descripcion,precio,cant
+        FROM ((inventario as inv
+        INNER JOIN producto as pro ON inv.producto_id = pro.codigo_barra)
+        INNER JOIN almacen as alm on inv.almacen_id = alm.id_almacen)
+        WHERE fecha=#{fecha};
+    </select>
+
+    <insert id="insertInventario" parameterType="Inventario">
+        INSERT INTO inventario(fecha,cant,precio,producto_id,almacen_id)
+        VALUES (#{fecha},#{cant},#{precio},#{producto.codigo_barra},#{almacen.id_almacen})
+    </insert>
+
+    <update id="update" parameterType="Inventario">
+        UPDATE inventario set producto_id=#{producto.id}, almacen_id=#{almacen.id}, precio=#{precio}, cant=#{cant}
+        WHERE fecha=#{fecha}
+
+    </update>
+
+
+
+
+</mapper>

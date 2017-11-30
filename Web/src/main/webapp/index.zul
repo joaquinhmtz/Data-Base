@@ -1,0 +1,32 @@
+<?page title="Proyecto Algortimos" ?>
+<?script type="text/javascript" src="/js/paginas.js"?>
+<?link rel="stylesheet" type="text/css" href="css/bootstrap.css" ?>
+<zk>
+
+	<script src="/js/paginas.js" defer="true"/>
+
+	<borderlayout hflex="1" vflex="1">
+		<north height="100px" border="none" >
+
+				<menubar height="100%" sclass="navbar navbar-toggleable-md navbar-light bg-faded">
+					<menuitem style="margin-top:20px; margin-left:50px; font-size:50px;" label="Almacenes" href="almacenes.zul"></menuitem>
+					<menuitem style="margin-top:20px; margin-left:50px; font-size:30px;" label="Productos" href="productos.zul"></menuitem>
+					<menuitem style="margin-top:20px; margin-left:50px; font-size:30px;" label="Inventarios" href="inventarios.zul"></menuitem>
+				</menubar>
+
+		</north>
+
+		<center id="mainContent" autoscroll="true">
+
+
+
+
+		</center>
+		<south height="50px" border="none">
+			<label style="font-size:50px">South for footer</label>
+		</south>
+	</borderlayout>
+
+
+
+</zk>

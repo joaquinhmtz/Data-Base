@@ -1,0 +1,4 @@
+driver = com.microsoft.jdbc.sqlserver.SQLServerDriver
+url = jdbc:microsoft:sqlserver://192.168.0.7:1433;DatabaseName=Proyecto
+user = Conexion
+pass = luis2330

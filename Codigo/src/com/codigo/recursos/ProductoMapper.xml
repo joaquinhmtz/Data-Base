@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codigo.dao.Producto">
+    <resultMap id = "result" type = "Producto">
+        <result property = "codigo_barra" column="codigo_barra"/>
+        <result property = "descripcion_producto" column="descripcion_producto"/>
+
+    </resultMap>
+
+    <select id="getTodosProductos" resultMap="result">
+        SELECT * FROM producto;
+    </select>
+
+    <select id="getByID" parameterType="int" resultMap="result">
+        SELECT * FROM producto WHERE codigo_barra=${codigo_barra}
+    </select>
+
+
+
+
+</mapper>
