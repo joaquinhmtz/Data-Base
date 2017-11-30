@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+    <mapper namespace="com.dao.producto">
+        <resultMap id="mapeoProducto" type="producto">
+            <result property="codigoBarras" column="CodigoBarras"></result>
+            <result property="descripcion" column="Descripcion"></result>
+        </resultMap>
+
+
+        <select id="selectProducto" parameterType="producto" resultMap="mapeoProducto">
+            SELECT * FROM producto;
+        </select>
+
+        <insert id="insertProducto" parameterType="producto">
+            insert into producto(CodigoBarras, Descripcion)
+            values (#{codigoBarras}, #{descripcion});
+        </insert>
+
+        <update id="updateProducto" parameterType="producto">
+            update producto set Descripcion = #{descripcion}
+            where  = CodigoBarras = #{codigoBarras};
+        </update>
+
+        <delete id="deleteProducto" parameterType="int">
+            delete from producto where CodigoBarras = #{codigoBarras};
+        </delete>
+
+
+    </mapper>
+

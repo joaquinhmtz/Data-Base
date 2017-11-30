@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+        <mapper namespace="com.dao.almacen">
+            <resultMap id="AlmacenMap" type="almacen">
+                <result property="IDAlmacen" column="IDalmacen"></result>
+                <result property="nombreAlmacen" column="nombreAlmacen"></result>
+                <result property="calle" column="calle"></result>
+                <result property="numExt" column="numExt"></result>
+                <result property="codigoPostal" column="codigoPostal"></result>
+                <result property="ciudad" column="ciudad"></result>
+            </resultMap>
+
+            <select id="selectAlmacen" parameterType="almacen" resultMap="AlmacenMap">
+                SELECT * FROM almacen;
+            </select>
+
+            <insert id="insertAlmacen" parameterType="almacen">
+                insert into almacen(IDalmacen, nombreAlmacen, calle, numExt, codigoPostal, ciudad)
+                values (#{IDAlmacen}, #{nombreAlmacen}, #{calle}, #{numExt}, #{codigoPostal}, #{ciudad});
+            </insert>
+
+            <update id="updateAlmacen" parameterType="almacen">
+                update almacen set nombreAlmacen = #{nombreAlmacen}, calle = #{calle},
+                numExt = #{numExt}, codigoPostal = #{codigoPostal}, ciudad = #{ciudad}
+                where IDalmacen = #{idAlmacen};
+            </update>
+
+            <delete id="deleteAlmacen" parameterType="int">
+                delete from almacen where IDalmacen = #{idAlmacen}
+            </delete>
+
+        </mapper>

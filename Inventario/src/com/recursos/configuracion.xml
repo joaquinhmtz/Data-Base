@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <typeAliases>
+
+        <package name="com.dao"></package>
+
+    </typeAliases>
+
+
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+                <property name="url" value="jdbc:sqlserver:// 192.168.1.95:1433;DatabaseName=Proyect"/>
+                <property name="username" value="sa"/>
+                <property name="password" value="holamundo"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+
+        <mapper resource="com/recursos/mapperProducto.xml"></mapper>
+        <mapper resource="com/recursos/mapperAlmacen.xml"></mapper>
+        <mapper resource="com/recursos/mapperInventario.xml"></mapper>
+    </mappers>
+</configuration>

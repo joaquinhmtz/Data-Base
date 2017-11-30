@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+        <mapper namespace="com.dao.inventario">
+            <resultMap id="InventarioMap" type="inventario">
+                <id property="idinventario" column="idinventario"></id>
+                <result property="fechaInventario" column="fechaInventario"></result>
+                <result property="Precio" column="Precio"></result>
+                <result property="Cantidad" column="Cantidad"></result>
+                <collection property="CodigoBarras" ofType="producto" javaType="producto">
+                    <id property="CodigoBarras" column="CodigoBarras"></id>
+                    <result property="descripcion" column="Descripcion"></result>
+                </collection>
+               <!-- <collection property="IDalmacen" ofType="almacen">
+                    <id property="IDAlmacen" column="IDalmacen"></id>
+                    <result property="nombreAlmacen" column="nombreAlmacen"></result>
+                    <result property="calle" column="calle"></result>
+                    <result property="numExt" column="numExt"></result>
+                    <result property="codigoPostal" column="codigoPostal"></result>
+                    <result property="ciudad" column="ciudad"></result>
+                </collection>-->
+            </resultMap>
+
+
+            <select id="selectInventario" parameterType="inventario" resultMap="InventarioMap">
+                SELECT * FROM inventario; <!--inner join almacen on almacen.IDalmacen = inventario.IDalmacen inner join producto on producto.CodigoBarras = inventario.CodigoBarras;-->
+            </select>
+
+            <insert id="insertInventario" parameterType="inventario">
+                insert into inventario(idinventario,fechaInventario, CodigoBarras, IDalmacen, Precio, Cantidad)
+                values (#{idinventario}, #{fechaInventario}, #{CodigoBarras}, #{IDalmacen}, #{Precio}, #{Cantidad});
+            </insert>
+
+            <update id="updateInventario" parameterType="inventario">
+                update almacen set fechaInventario = #{fechaInventario}, CodigoBarras = #{producto.CodigoBarras}, IDalmacen = #{almacen.IDAlmacen},
+                Precio = #{Precio}, Cantidad = #{Cantidad}
+                where fechaInventario = #{fechaInventario};
+            </update>
+
+            <delete id="deleteInventario" parameterType="int">
+                delete from inventario where idinventario = #{idinventario}
+            </delete>
+
+
+        </mapper>
