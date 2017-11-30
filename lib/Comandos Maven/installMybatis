@@ -1,1 +1,1 @@
-install:install-file -Dfile=/Users/fernando/Desktop/lib/mybatis-3.2.7.jar -DgroupId=mybatis -DartifactId=mybatis -Dversion=3.2.7 -Dpackaging=jar
+install:install-file -Dfile=C:/Users/lib/mybatis-3.2.7.jar -DgroupId=mybatis -DartifactId=mybatis -Dversion=3.2.7 -Dpackaging=jar
