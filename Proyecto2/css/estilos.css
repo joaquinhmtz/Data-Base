@@ -1,0 +1,17 @@
+@media screen and(max-width: 480px){
+	.sect h6{
+		font-size: 40px;
+	}
+	p{
+		text-align: center;	
+	}
+	.menu .card img{
+		width: 100%;
+	}
+	.colu{
+		width: 100%;
+	}
+}
+@media screen and(max-width: 320px){
+
+}

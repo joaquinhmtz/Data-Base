@@ -1,0 +1,173 @@
+.row .col1{
+	height: 70px;
+	background: #fb7969;
+}
+.row .col1 p{
+	font-size: 13px;
+	text-align: center;
+	padding-top: 16px;
+}
+.contenedor-int{
+	width: 100%;
+}
+.contenedor-int article{
+	margin: 0 0 15px 0;
+	padding: 0 0 0px 0;
+	overflow: hidden;
+	border-bottom: 1px solid #e0e0e0;
+	box-sizing: border-box;
+	position: relative;
+}
+@media screen and (max-width: 480px){
+ 	.con h1{
+		font-size: 50px;
+	}
+	.columna2{
+		text-align: center;
+	}
+	.row .columna iframe{
+		width: 270px;
+	}
+	.mision .row .c1{
+		padding-top: 10px;
+	}	
+	.vision .row .c3{
+		padding-top: 10px;
+
+	}
+	.vision .row .c4{
+		padding-top: 0;
+	}
+	.contactanos .banner h1{
+		text-align: center;
+		font-size: 50px;
+	}
+	.contact h1{
+		text-align: center;
+		font-size: 50px;
+	}
+	.producto1 img{
+		width: 100%;
+	}
+	.producto3 img{
+		width: 100%;
+	}
+}
+@media screen and(max-width: 320px){
+	.con h1{
+		font-size: 70px;
+	}
+	.contact h1{
+		text-align: center;
+		font-size: 60px;
+	}
+}
+article h2{
+	text-align: center;
+}
+article p{
+	text-align: justify;
+	font-size: 20px;
+}
+.color1{
+	background: blue;
+	height: auto;
+}
+.vision{
+	background: #009688;
+}
+.mision{
+	background: #fff;
+}
+.valores{
+	background: #0A88BC;
+}
+.objetivos{
+	background: #fff;
+}
+.row .c1{
+	text-align: center;
+	padding-top: 45px;
+}
+.row .c2{
+	text-align: justify;
+	padding-top: 40px;
+}
+.row .c3{
+	text-align: center;
+	padding-top: 50px;
+}
+.row .c4{
+	text-align: justify;
+	padding-top: 20px;
+}
+.row .c6 h1{
+	text-align: center;
+	padding-top: 10px;
+}
+.row .c6 ul li{
+	text-align: justify;
+}
+.row .c6 p{
+	text-align: justify;
+}
+.row .c7 h1{
+	text-align: center;
+	padding-top: 10px;
+}
+.row .c7 ul li{
+	text-align: justify;
+}
+nav.navbar{
+	background: #fb7969;
+}
+.row .contactanos{
+	background: #fb7969;
+}
+.contactanos a span{
+	color: #333333;
+}
+.contactanos a span:hover{
+	color: #444;
+}
+.contact h1{
+	color: #444;
+}
+.producto1{
+	background: #fff;
+}
+.ptoducto1 .rounded{
+	padding-top: 10px;
+}
+.producto2{
+	background: #fff;
+}
+.producto3{
+	background: #fff;
+}
+.servicios article{
+	border-bottom: 1px solid #e0e0e0;
+	box-sizing: border-box;
+	margin: 0 0 15px 0;
+	padding: 0 0 0px 0;
+}
+.bot{
+  display: flex;
+  justify-content: center;
+}
+.bot .btn{
+	background: #21b384;
+}
+article{
+	border-bottom: 1px solid #e0e0e0;
+}
+.form{
+	background: #21b384;
+}
+.form h1{
+	font-size: 30px;
+	color: #fff;
+}
+.form label{
+	color: #fff;
+}
